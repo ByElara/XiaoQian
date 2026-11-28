@@ -1,0 +1,370 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f7fb"><title>小牵 V1.1 低保真交互原型</title><style>*{box-sizing:border-box}body{margin:0;background:#e9e9ef;color:#16161c;font:15px system-ui,"Microsoft YaHei",sans-serif}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}button:focus-visible{outline:2px solid #fa1557;outline-offset:2px}input,select,textarea{max-width:100%;border:0;background:#f2f1f6;border-radius:10px;padding:10px}input[type=checkbox],input[type=radio]{accent-color:#ff0951}textarea{width:100%;resize:vertical}img{object-fit:cover;vertical-align:middle}h1,h2,h3,p{margin:0 0 10px}h1{font-size:25px}h2{font-size:19px}h3{font-size:16px}small,.muted{color:#626371}#phone{position:relative;max-width:480px;height:100dvh;margin:auto;background:#f8f7fb;box-shadow:0 0 55px #21213429;overflow:hidden}#app{height:100%;display:flex;flex-direction:column}main{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}.pad{padding:12px}.bar{display:grid;grid-template-columns:86px 1fr 86px;align-items:center;text-align:center;min-height:54px;padding:6px 12px;background:#fff;border-bottom:1px solid #efedf2;z-index:1}.bar strong{font-size:19px}.back{font-size:28px;text-align:left}.foot{display:flex;gap:8px;justify-content:space-around;align-items:center;padding:10px 12px max(14px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid #efedf2}.foot>*{flex:1}.btn{padding:11px 10px;border-radius:15px;background:#efedf4;font-weight:650;text-align:center}.primary{background:linear-gradient(110deg,#ff1554,#ff0050);color:white}.outline{background:#fff;border:1px solid #ed1454;color:#df114b}.accent{color:#e41350}.wide{width:100%}.box{background:#fff;border-radius:15px;padding:13px;margin-bottom:10px;box-shadow:0 2px 7px #2220360a}.row{display:flex;gap:9px;align-items:center}.between{justify-content:space-between}.grow{flex:1;min-width:0}.line{padding:10px 0;border-bottom:1px solid #f0eef3}.line:last-child{border-bottom:0}.tabs{display:flex;gap:3px;background:white;overflow:auto}.tabs button{flex:1;white-space:nowrap;padding:13px 7px;border-bottom:3px solid transparent}.tabs .active{font-weight:750;border-bottom-color:#ff0750;color:#d91347}.days{background:transparent;margin:9px 0}.days button{border-radius:10px;background:#efedf3}.days .active{background:#ffe5ed}.thumb{width:63px;height:53px;border-radius:9px}.cover{width:92px;height:112px;border-radius:10px}.hero{height:175px;background-position:center;background-size:cover;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;position:relative}.hero h1{margin:0 0 4px}.hero .btn{background:#1118;color:#fff;padding:6px}.badge{display:inline-block;border-radius:20px;background:#ffe5ee;color:#d9104c;padding:3px 8px;font-size:12px;white-space:nowrap}.green{background:#d9f5e9;color:#14713d}.purple{background:#eee7ff;color:#5534a8}.map{position:relative;overflow:hidden;height:115px;border-radius:12px;background:#e9eadf}.map canvas{width:100%;height:100%;display:block}.map button{position:absolute;top:7px;right:7px;background:white;border-radius:16px;padding:5px 8px;font-size:12px}.timeline{border-left:1px solid #d6d2db;margin-left:7px;padding-left:12px}.point{position:relative;margin:8px 0}.point:before{content:"";width:8px;height:8px;border:2px solid #ff1455;background:white;border-radius:100%;position:absolute;left:-19px;top:17px}.time{min-width:43px;font-weight:750;font-size:13px}.place{border-radius:12px;background:white;padding:6px 8px;box-shadow:0 1px 5px #2221;text-align:left}.leg{margin:4px 0 6px 51px;padding:6px 10px;border-radius:9px;background:#ffedf2;font-size:12px;width:calc(100% - 51px);text-align:left}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.tile{background:#fff;border-radius:13px;overflow:hidden;text-align:left;box-shadow:0 2px 8px #2221}.tile div{padding:10px}.tile img{width:100%;height:147px}.tag{position:absolute;top:8px;left:8px;background:#f01853;color:white;border-radius:8px;padding:4px 7px;font-size:12px}.tilepic{position:relative}.categories{display:flex;justify-content:space-around;gap:4px;text-align:center;font-size:12px;margin:16px 0}.categories b{display:block;font-size:24px}.feed{background:linear-gradient(0deg,#141318 0%,transparent 65%),none center/cover;display:flex;flex-direction:column;justify-content:flex-end;color:white;position:relative}.dark{background:#1d1c23;color:white;border-color:#333}.feed .entry{align-self:center;color:white;border:1px solid #fff9;border-radius:22px;padding:8px 18px;position:absolute;bottom:31%}.feed .actions{position:absolute;right:12px;bottom:16%;display:grid;gap:12px;text-align:center}.feed .actions button{font-size:21px}.feed .caption{padding:14px 65px 16px 14px}.pink{background:#fff0f5}.photo{width:100%;max-height:230px;border-radius:10px}.photogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}.photogrid img{width:100%;height:75px;border-radius:8px}.empty{text-align:center;padding:46px 16px;color:#666}.empty img{width:105px;margin-bottom:14px}.empty h3{color:#16161c}.shade{position:absolute;inset:0;background:#1c1a2888;z-index:5;display:flex;align-items:end}.sheet{background:#faf9fc;border-radius:23px 23px 0 0;width:100%;max-height:91%;overflow:auto;padding:13px 15px 20px;overscroll-behavior:contain}.grab{width:37px;height:4px;border-radius:10px;background:#c2c0c8;margin:0 auto 8px}.sheethead{display:grid;grid-template-columns:32px 1fr 32px;text-align:center;align-items:center;margin-bottom:12px}.sheethead button{font-size:22px}.center{align-items:center;padding:25px}.center .sheet{border-radius:20px;text-align:center}.stack{display:grid;gap:8px}.stack button,.selectrow{display:flex;align-items:center;gap:9px;width:100%;padding:11px;background:white;border-radius:9px;text-align:left}.selectrow.selected{background:#ffe9f0;outline:1px solid #ff1653}.form label{display:block;margin:8px 0;font-weight:600}.form input:not([type=checkbox]):not([type=radio]),.form select{width:100%}.steps{display:flex;justify-content:space-around;text-align:center;margin:8px 0 17px;font-size:12px}.steps b{display:block;margin:0 auto 5px;border-radius:50%;background:#dfdde5;width:23px;line-height:23px}.steps .active b{background:#ff1052;color:white}progress{width:100%;accent-color:#ff0b50}#toast{position:absolute;z-index:12;bottom:77px;left:50%;transform:translateX(-50%);width:max-content;max-width:90%;padding:10px 15px;border-radius:12px;background:#23212df2;color:white;text-align:center;pointer-events:none}#toast:empty{display:none}.recordpic{width:100%;height:66px;background:#ffedf3;border-radius:8px;display:grid;place-items:center;color:#d91347}.round{border-radius:25px}.status{padding:8px 16px 0;display:flex;justify-content:space-between;font-size:12px;font-weight:750;background:#fff}.status.dark{background:#1d1c23}
+[data-drag]{touch-action:none;-webkit-user-select:none;user-select:none}.feed .actions>img{width:42px;height:42px;border-radius:50%;border:2px solid white;margin:auto}.feed .actions .btn{font-size:13px}.feed .actions small{margin-top:-9px}.bar .btn{padding:6px 10px}.hero .back{color:white}.categories button{min-width:0}.point img{pointer-events:none}.sheet .map{margin-bottom:9px}.active{font-weight:750}.foot .active{text-decoration:underline;text-underline-offset:6px}
+.feed{background-position:center,center 55%}.feed .caption{padding-bottom:23px}.feed .entry{bottom:30%;font-weight:600}.status span:last-child{letter-spacing:1px}.tilepic img{display:block}.box .row>input[type=date]{min-width:140px}.pub-cover{max-height:260px}
+.reference-view{padding:0;background:#fff}.reference{position:relative;aspect-ratio:var(--ref-ratio);width:100%;flex:none;background:#fff}.reference-image{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.reference-fit{min-height:100%}.ref-action{position:absolute;z-index:1;color:transparent;font-size:0;border-radius:10px;background:transparent}.ref-action:focus-visible{outline:2px solid #ff0b50;outline-offset:-2px;background:#ff0b5024}.ref-action.ref-visible{background:#28212b80;color:#ff2d62;font-size:27px}.reference-footer{margin-top:auto}.route-reference{width:100%;height:100%;object-fit:fill;display:block}.reference-fit .reference-image{width:100%;height:100%}@media(min-width:520px){#phone:has([data-page=feed]){max-width:min(480px,57.1dvh)}}
+.sheet-art{padding:0;background:transparent;overflow:hidden}.sheet-art .reference{background:transparent}.shade.center{backdrop-filter:blur(2px)}.shade:has(.sheet-art){background:#25252c80}.shade.center:has(.sheet-art){padding:0 6%}
+#app[data-page="edit"]>.reference,#app[data-page="record"]>.reference,#app[data-page="search"]>.reference{background:#f8f7fb}
+#app[data-page="edit"] main,#app[data-page="record"] main{padding:10px 13px}
+#app[data-page="edit"] main>.box:first-child{padding:10px 14px}
+#app[data-page="edit"] [data-edit=title]{background:#efedf4;font-size:16px;font-weight:750;padding:9px 12px;margin:4px 0 0}
+#app[data-page="edit"] label.row input{background:none;text-align:right;padding:0 1px;font-weight:700;max-width:48%}
+#app[data-page="edit"] .line{padding:10px 0}
+#app[data-page="edit"] .map{height:auto;aspect-ratio:3.45}
+#app[data-page="edit"] .place .thumb{width:61px;height:48px}
+#app[data-page="edit"] .timeline+.btn{background:#fff;margin-top:9px;box-shadow:0 1px 5px #2221}
+#app[data-page="edit"] footer .btn{border-radius:10px;font-size:15px}
+#app[data-page="edit"] footer .btn:not(.primary){border:1px solid #d1cfd7;background:white}
+#app[data-page="edit"] footer .primary{flex:1.5}
+#app[data-page="record"] .box{box-shadow:none;border-radius:16px;padding:12px 16px;margin-bottom:8px}
+#app[data-page="record"] .box label{margin:3px 0}
+#app[data-page="record"] .box input,#app[data-page="record"] .box textarea,#app[data-page="record"] .box select{margin-top:7px;background:#f3f2f6}
+#app[data-page="record"] .recordpic{height:61px}
+#app[data-page="record"] footer{background:#f9f8fc;border:0}
+#app[data-page="private"] .hero{height:auto;min-height:165px;aspect-ratio:2.14}
+#app[data-page="private"] .days .active{background:#ffe7ef;color:#e41552}
+#app[data-page="search"] main{background:#fff}
+#app[data-page="search"] .line .thumb{width:73px;height:66px}
+#app[data-page="search"] .badge{background:white;color:#e6114c;border:1px solid #f33369;white-space:nowrap}
+#app[data-page="publish"] .steps{position:relative}
+#app[data-page="publish"] .steps:before{content:"";height:2px;background:#dedce2;position:absolute;left:16%;right:16%;top:11px}
+#app[data-page="publish"] .steps b{position:relative;z-index:1}
+#app[data-page="publish"] .box{box-shadow:none;border:1px solid #f0edf3}
+#app[data-page="publish"] footer .btn{border-radius:28px}
+.transport-sheet{padding:11px 14px 22px;border-radius:24px 24px 0 0}.transport-sheet .sheethead{font-size:19px;margin-bottom:16px}.transport-sheet .selectrow{margin-bottom:3px;border:1px solid #efedf3;padding:12px 10px}.transport-sheet .selectrow:has(input:checked){background:#ffe8ef;border-color:#f51051}.transport-sheet .selectrow input{order:1;margin-left:auto;min-width:18px;min-height:18px}.transport-sheet h3{font-weight:750}.transport-sheet .primary{font-size:17px}.reference-view>.grid{padding:0 10px 10px}
+:root{color-scheme:light}body{background:#eaece8;color:#252724;font-family:"Noto Sans CJK SC",system-ui,sans-serif}#phone{max-width:460px;background:#fafaf8;box-shadow:0 0 0 1px #bec1bb;filter:grayscale(1)}.status{font-size:12px;padding:5px 15px}button{line-height:1.35}.topnav,.author{display:flex;align-items:center;justify-content:space-around;gap:6px;background:#fff;min-height:49px;border-bottom:1px solid #c8c9c5;padding:4px 10px}.topnav button{padding:7px 5px}.topnav .on{border-bottom:3px solid #333;font-weight:700}.author b{flex:1}.wfpic{display:inline-flex;align-items:center;justify-content:center;background:#e9eae7;border:1px dashed #aeafa9;font-size:12px;color:#4c504a;position:relative;line-height:1.3;flex-shrink:0}.wfpic>span{padding:2px 4px;background:#e9eae7}.poster,.tile .wfpic{width:100%;height:clamp(105px,16vh,150px)}.widepic,.photo.wfpic{width:100%;height:112px}.recpic{width:100%;height:58px}.avatar{width:32px;height:32px;border-radius:50%;font-size:10px}.wfpost{position:relative;overflow:hidden;min-height:0}.wfpost .fullpic{position:absolute;inset:0;width:100%;height:100%;border:0;font-size:20px;background:linear-gradient(to bottom right,transparent calc(50% - .6px),#c9cbc5 50%,transparent calc(50% + .6px)),linear-gradient(to top right,transparent calc(50% - .6px),#c9cbc5 50%,transparent calc(50% + .6px)),#e9eae7}.wfpost .read{position:absolute;top:62%;left:50%;transform:translate(-50%,-50%);border:1px solid #60645c;border-radius:30px;padding:9px 16px;background:#fcfcf9;white-space:nowrap}.rail{position:absolute;right:8px;top:35%;display:grid;gap:7px}.rail button{padding:5px 6px;border:1px solid #acafa6;border-radius:7px;background:#f4f6f0;font-size:12px}.caption{position:absolute;left:12px;right:12px;bottom:12px;background:#f6f7f3e8;border:1px solid #b8bcb2;padding:10px}.caption h2{font-size:17px;margin:5px 76px 0 0}.caption .btn{position:absolute;right:7px;bottom:8px}.chan{background:white;padding:9px 10px}.cats,.profmenu{display:flex;justify-content:space-between;gap:3px;margin-top:10px}.cats button,.profmenu button{flex:1;font-size:12px}.cats b{display:block;border:1px solid #aaa;width:24px;height:24px;margin:0 auto 3px;border-radius:6px;line-height:22px}.searchbtn{border:1px solid #999;border-radius:8px;background:#f8f8f5;padding:9px;text-align:left}.tile .tilepic{padding:0}.box,.place,.tile{border:1px solid #c5c8c1;box-shadow:none;border-radius:9px}.wireinfo{display:none}.wfmap{position:relative;background:#eef0ea;border:1px dashed #a0a69b;border-radius:6px;padding:9px;min-height:100px;margin-bottom:7px}.wfmap.large{min-height:205px}.wfmap>div{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:17px}.wfmap>div span{font-size:12px;background:white;border:1px solid #b7bcb2;padding:3px 5px}.wfmap button{position:absolute;right:8px;top:6px;background:white;padding:2px 6px;border:1px solid #bbb}.hero{background:#dedfdb!important;color:#272926;height:160px}.hero:before{content:"行程封面";text-align:center;position:absolute;top:36%;left:37%;color:#666;font-size:12px}.hero .btn{background:#fff;color:#252824}.btn,.badge,.accent,.leg,.pink,.days button,.green,.purple{background:#f1f2ed;color:#272a23}.btn,.res{border:1px solid #b5b9b1}.primary,.tag{background:#444940!important;color:white!important}.tabs .active{border-color:#3a4037;color:#30372c}.res{display:block;text-align:left;padding:8px;width:100%;border-radius:6px;background:#f7f8f4;overflow-wrap:anywhere}.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.prof{padding:0 10px 12px;background:#f3f4ef}.profp{width:100%;height:120px}.prof .row{margin:12px 0}.profmenu button{border:1px solid #bbb;border-radius:5px;padding:7px 2px}.photogrid{grid-template-columns:repeat(3,1fr)}.foot button{min-height:35px}input.grow{min-width:0}#notes{display:none}.bar{grid-template-columns:60px 1fr 78px}.grid small{font-size:11px}.tile b{font-size:14px}.sheet-art .stack{padding:16px}.sheet{background:#fbfbf9}
+@media(min-width:980px){body{min-height:100dvh;display:flex;align-items:center;justify-content:center;gap:46px;padding:16px}#phone{width:450px;margin:0;height:min(890px,calc(100dvh - 32px));border-radius:10px}#notes{display:block;border-left:2px solid #979e90;padding-left:20px;width:226px}#notes small{font-size:12px}#notes h2{font-size:19px;margin:12px 0}#notes p{font-size:14px;line-height:1.8}}
+
+.pagecount{position:absolute;top:9px;right:10px;border-radius:12px;padding:3px 7px;background:#f2f2ef;color:#555}.caption p{font-size:12px;margin:2px 60px 0 0}.caption:has(p:empty) p{display:none}.rail{top:42%;gap:5px}.rail button{padding:3px 5px}.profcover{position:relative;margin:0 -10px}.profp{height:190px}.profactions,.identity,.stats,.overview{display:flex;align-items:center;gap:8px}.profactions{position:absolute;left:9px;right:9px;top:6px;justify-content:flex-end}.profactions button:first-child{margin-right:auto}.profactions button,.identity{padding:4px 6px;border:1px solid #b6b7b5;border-radius:6px;background:#fafafa}.identity{position:absolute;bottom:8px;left:10px}.identity .avatar{width:43px;height:43px}.stats{justify-content:space-between;padding:8px 0}.overview>.wfmap{width:64%;margin:0 0 0 auto}.caption .btn{bottom:auto;top:7px}.profmenu{margin:8px 0}.hero:before{pointer-events:none}.tile .tilepic:has(.wfpic){min-height:0}
+
+@supports not (height:100dvh){#phone{height:100vh} @media(min-width:980px){#phone{height:calc(100vh - 32px)}body{min-height:100vh}}}
+
+.qa{margin-top:26px;font-size:12px}.qa summary{cursor:pointer}.qa button{display:block;margin:8px 0;padding:5px 7px;border:1px solid #aaa;border-radius:4px;background:#fff}.qa small{display:block;color:#454a44}
+</style><aside id="notes"><small>小牵 V1.1　/　低保真评审</small><h2 id="where"></h2><p id="help"></p><small>虚线区域表示素材位置。点击手机内控件即可走查。</small><details class="qa"><summary>本地异常模拟</summary><button id="failWrite">下次保存失败</button><button id="failOpen">下次外部跳转失败</button><small id="testStatus" aria-live="polite"></small></details></aside><div id="phone"><div id="app"></div><div id="overlay"></div><output id="toast" role="status"></output></div><script>
+"use strict";
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const clone=typeof structuredClone==="function"?structuredClone:obj=>JSON.parse(JSON.stringify(obj));
+const id=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const places=[
+ ["中江塔","stop0","景点"],["凤凰美食街","stop1","美食"],["芜湖滨江公园","stop2","景点"],["赭山公园","stop3","景点"],["芜湖古城","stop4","景点"],["芜湖八佰伴","mall","商场"],["镜湖公园","park","景点"],["小菜园（八佰伴店）","dish","美食"]
+];
+const modes=["驾车","公交","步行","骑行","打车"], modeIcons=["♧","▣","♙","♧","♧"];
+const makeStop=(i,time="")=>({id:id(),i,time,stay:i===1?90:60,cost:i===1?50:0,note:"",visibility:"私密",links:{}});
+const trip=(title="周末去芜湖",copy=false)=>({id:id(),title,city:"芜湖",date:copy?"":"2025-11-22",status:"待出发",cover:"tower",days:[[makeStop(0,"10:00"),makeStop(1,"11:30"),makeStop(2,"14:00")],[makeStop(3,"09:30"),makeStop(4,"11:30")]],records:[],prep:["预订往返车票","预订住宿","购买景区门票","准备身份证和充电宝","查看目的地天气"].map((name,i)=>({name,done:i<2}))});
+const sample=trip("来芜湖，留两天给江边");
+sample.records=[
+ {title:"整个行程的旅行记录",body:"这次在芜湖待了两天，节奏很舒服！白天逛地标、吃美食，傍晚在滨江公园看江边日落，江风超治愈～",photos:["sunset.jpg","tower.jpg","river.jpg"],links:[]},
+ ...["中江塔打卡体验","凤凰美食街觅食记","滨江公园的日落"].map((title,i)=>({title,stop:sample.days[0][i].id,body:["登上中江塔俯瞰长江和城市风光，历史感十足！","小吃种类特别多，虾籽面和锅贴都值得尝试。","江边的落日太治愈了，吹着江风很放松～"][i],photos:[[ "tower.jpg","stop0.jpg","sunset.jpg"],["food.jpg","dish.jpg","stop1.jpg"],["sunset.jpg"]][i],links:[["中江塔景区门票（成人）","芜湖文旅联票"],["凤凰美食街美食套餐","小吃街代金券"],[]][i]}))
+];
+const seed=trip(), coast={...trip("厦门海岛漫游计划"),city:"厦门",cover:"sea",days:[[]],status:"进行中"}, draft={...trip("南京周末citywalk"),city:"南京",cover:"sunset",days:[[]],status:"草稿"};
+const storeKey="xiaoqian-wire-20261126";
+let data;
+try{data=JSON.parse(localStorage.getItem(storeKey))}catch{}
+if(!data)data={trips:[seed,coast,draft],works:[],drafts:[],edits:{},likes:{},favorites:{}};
+function save(){try{localStorage.setItem(storeKey,JSON.stringify(data));return true}catch{toast("本地存储空间不足，当前修改仍保留在本次会话");return false}}
+let page={name:"feed"}, stack=[], modal=null, actions=[], overlayActions=[], edit, editOrigin, original, rec, pub, toastTimer, drag;
+const allStops=t=>t.days.flat();
+const stopName=s=>places[s.i][0];
+const photoUrl=()=>"";
+const image=(name,cls="",alt="")=>iconSlot(alt||(cls.includes("cover")?"行程封面":name==="empty"?"记录空态":name==="avatar"?"头像":name==="sunset"?"草稿封面":"地点图片"),cls);
+function btn(label,fn,cls="",inModal=false,attr=""){
+ const list=inModal?overlayActions:actions;
+ return `<button type="button" class="${cls}" data-action="${list.push(fn)-1}" ${attr}>${label}</button>`;
+}
+const main=html=>`<main class="pad">${html}</main>`;
+const status=(dark=false)=>`<div class="status ${dark?"dark":""}"><span>21:08</span><span>▮▮▮ ◔ ▰</span></div>`;
+const header=(title,right="")=>`<header class="bar">${btn("‹",back,"back",false,'aria-label="返回"')}<strong>${esc(title)}</strong><div>${right}</div></header>`;
+const foot=(...items)=>`<footer class="foot">${items.join("")}</footer>`;
+const primary=(label,fn,m=false)=>btn(label,fn,"btn primary",m);
+function toast(message){$("toast").textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").textContent="",2300)}
+function rerender(){const y=document.querySelector("main")?.scrollTop;render();if(y)document.querySelector("main").scrollTop=y}
+function go(name,props={}){page.scroll=document.querySelector("main")?.scrollTop||0;stack.push(page);page={name,...props};modal=null;render()}
+function replace(name,props={}){page={name,...props};modal=null;render()}
+function pop(){page=stack.pop()||{name:"feed"};modal=null;render();document.querySelector("main").scrollTop=page.scroll||0}
+function back(){
+ if(modal){modal.close();return}
+ if(page.name==="edit"&&JSON.stringify(edit)!==page.initial){confirmBox("退出行程编辑？","可继续编辑或放弃本次修改。","放弃修改",pop);return}
+ if(page.name==="record"&&JSON.stringify(rec)!==page.initial){sheet("保存旅行记录？",()=>`<div class="stack">${btn("继续编辑",close,"",true)}${btn("保存草稿并退出",()=>saveRecord(true),"",true)}${btn("放弃修改",()=>{close();pop()},"accent",true)}</div>`);return}
+ if(page.name==="publish"&&pub.step>0){pub.step--;render();return}
+ pop();
+}
+function sheet(title,content,{closeFn=close,center=false,visual=""}={}){modal={title,content,close:closeFn,center,visual};renderModal()}
+function close(){modal=null;renderModal()}
+function renderModal(){
+ overlayActions=[];
+ $("overlay").innerHTML=modal?`<div class="shade ${modal.center?"center":""}"><section class="sheet ${modal.visual==="art"?"sheet-art":""} ${modal.title==="选择出行方式"?"transport-sheet":""}" role="dialog" aria-modal="true" aria-label="${esc(modal.title)}">${modal.visual==="art"?"":`<div class="grab"></div><div class="sheethead"><span></span><strong>${esc(modal.title)}</strong>${btn("×",modal.close,"",true,'aria-label="关闭"')}</div>`}${modal.content()}</section></div>`:"";
+ paintMaps();
+}
+$("phone").addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(b)(b.closest("#overlay")?overlayActions:actions)[b.dataset.action]?.()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")back()});
+history.pushState({demo:true},"");
+window.addEventListener("popstate",()=>{back();history.pushState({demo:true},"")});
+function set(key,value){page[key]=value;rerender()}
+function tabs(items,selected,fn,extra=""){return `<div class="tabs ${extra}">${items.map((item,i)=>btn(esc(item),()=>fn(item,i),item===selected?"active":"")).join("")}</div>`}
+const navigation=(dark=false)=>`<footer class="foot ${dark?"dark":""}">${btn("首页",()=>go("feed"))}${btn("朋友",()=>native("朋友"))}${btn("⊞",createPicker,"",false,'aria-label="创作"')}${btn("消息",()=>native("消息"))}${btn("我",()=>go("profile"))}</footer>`;
+function createPicker(){sheet("选择创作类型",()=>`<div class="row between"><span>文字</span><span>照片</span><span>视频</span>${primary("行程",()=>{close();startEdit()},true)}</div>`)}
+const topNav=(channel,dark=false)=>`<div class="foot ${dark?"dark":""}">${btn("☰",()=>go("profile"))}${btn("关注",()=>go("feed"))}${btn("同城",()=>go("channel",{category:"附近"}))}${btn("行程",()=>go("channel"),channel?"accent":"")}${btn("推荐",()=>go("feed"),channel?"":"active")}${btn("⌕",()=>go("search"),"",false,'aria-label="搜索"')}</div>`;
+
+function toggle(key,ref){data[key][ref]=!data[key][ref];save();rerender()}
+function openPublic(copy=false,t=sample){go("public",{trip:t,day:0});if(copy)copySheet(t)}
+const tileList=[["mountain","行程","川西3天2晚自驾行程｜雪山湖泊·小众秘境全攻略","@阿屿在路上　♡ 1.2万"],["food","团购","牛香十里潮汕牛肉火锅","¥88　已售3000+"],["lake","景点百科","杭州西湖景区","★ 4.8　12.3万条评价"],["sea","行程","厦门4天3晚海岛慢游｜鼓浪屿·环岛路","@旅行小鹿　♡ 8,642"],["tower","行程","来芜湖，留两天给江边","@阿屿在路上　5站"]];
+function nativePage(){return header(page.title)+main(`<div class="box"><h2>${esc(page.title)}</h2><p class="muted">平台原生页面 · 演示占位</p>${btn("返回来源",pop,"btn outline")}</div>`)}
+function paintMaps(){document.querySelectorAll("canvas[data-map]").forEach(c=>{
+ const ctx=c.getContext("2d"),w=c.width,h=c.height, names=JSON.parse(c.dataset.map);
+ ctx.fillStyle="#e9e9e4";ctx.fillRect(0,0,w,h);
+ for(let j=0;j<9;j++){ctx.fillStyle=j%2?"#d1e9c4":"#e1efcf";ctx.fillRect(j*86-15,(j*47)%h,73,52)}
+ ctx.fillStyle="#7bd6f0";ctx.beginPath();ctx.moveTo(w*.62,0);ctx.lineTo(w*.80,0);ctx.lineTo(w*.61,h);ctx.lineTo(w*.49,h);ctx.closePath();ctx.fill();
+ ctx.strokeStyle="#fff";ctx.lineWidth=6;for(let j=0;j<12;j++){ctx.beginPath();ctx.moveTo(j*80-90,0);ctx.lineTo(j*80-170,h);ctx.stroke()}for(let j=0;j<4;j++){ctx.beginPath();ctx.moveTo(0,j*65-30);ctx.lineTo(w,j*65+45);ctx.stroke()}
+ const dots=names.map((_,i)=>[95+i*(w-190)/Math.max(1,names.length-1),h*(.31+(i%2)*.20)+i*2]);
+ dots.forEach(([x,y],i)=>{if(!i)return;const [a,b]=dots[i-1];ctx.beginPath();ctx.moveTo(a,b);ctx.bezierCurveTo((a+x)/2,b,(a+x)/2,y,x,y);ctx.strokeStyle="#fff";ctx.lineWidth=10;ctx.stroke();ctx.strokeStyle="#ff1856";ctx.lineWidth=5;ctx.stroke()});
+ dots.forEach(([x,y],i)=>{ctx.beginPath();ctx.arc(x,y,17,0,Math.PI*2);ctx.fillStyle="#fb124f";ctx.fill();ctx.fillStyle="#fff";ctx.textAlign="center";ctx.font="bold 19px sans-serif";ctx.fillText(i+1,x,y+6);ctx.font="bold 17px Microsoft YaHei";const size=ctx.measureText(names[i]).width+15;ctx.fillStyle="#fffffff1";ctx.beginPath();ctx.roundRect(x-size/2,y+18,size,24,11);ctx.fill();ctx.fillStyle="#16161c";ctx.fillText(names[i],x,y+36)});
+ if(!names.length){ctx.fillStyle="#53545d";ctx.textAlign="center";ctx.font="22px Microsoft YaHei";ctx.fillText("添加地点后显示路线",w/2,h/2)}
+})}
+function legInfo(a,b){const base=a.i===0&&b.i===1?3.2:a.i===1&&b.i===2?1.6:1.2+Math.abs(a.i-b.i)*.7;
+ const mode=a.links?.[b.id]??(base<2?2:0);
+ const mins=[Math.max(8,Math.round(base*3)),Math.round(base*5.6),Math.round(base<2?base*6.25:base*12.5),Math.round(base*4.7),Math.max(8,Math.round(base*3))];
+ return {base,mode,mins}
+}
+const dateLabel=(t,i=0)=>{if(!t.date)return "";const d=new Date(t.date+"T12:00:00");d.setDate(d.getDate()+i);return (d.getMonth()+1)+"/"+d.getDate()};
+function dayTabs(t,day,fn,add=null,m=false){return `<div class="tabs days">${t.days.map((_,i)=>btn(`第 ${i+1} 天 ${dateLabel(t,i)}`,()=>fn(i),i===day?"active":"",m)).join("")}${add?btn("＋ 添加天数",add,"",m):""}</div>`}
+function timeline(t,day,kind="private",m=false){
+ const stops=t.days[day]||[];
+ return `<div class="box"><h3>第 ${day+1} 天 ${dateLabel(t,day)}</h3>${stops.length?`<div class="timeline">${stops.map((s,i)=>{
+ const next=stops[i+1],leg=next&&legInfo(s,next);
+ const handler=kind==="edit"?()=>stopSheet(s):()=>kind==="preview"?previewPlace(s,t,day):native(stopName(s));
+ return `<div class="point"><div class="row"><span class="time">${esc(s.time||"待填写")}</span>${btn(`${image(places[s.i][1],"thumb")}<span class="grow"><b>${stopName(s)}</b><br><small>停留 ${s.stay} 分钟 · ${s.cost?"约 ¥"+s.cost:"免费"}</small></span><span>${kind==="edit"?"☰":"›"}</span>`,handler,"place row grow",m,kind==="edit"?`data-drag="stop" data-index="${i}" draggable="true"`:"")}</div>${kind==="public"?t.records.filter(r=>r.stop===s.id).map(r=>recordCard(r,false,true)).join(""):""}${leg?btn(`${modeIcons[leg.mode]}　${modes[leg.mode]} · 约 ${leg.base.toFixed(1)} 公里 · 约 ${leg.mins[leg.mode]} 分钟　›`,()=>kind==="edit"?transport(s,next):toast("路线时间为演示估算"),"leg",m):""}</div>`
+ }).join("")}</div>`:'<p class="muted">当天还没有地点</p>'}${kind==="edit"?btn("＋ 添加地点",()=>go("search",{adding:true,query:"芜湖八佰伴"}),"btn wide"):""}</div>`
+}
+function addStop(i){const s=makeStop(i);edit.days[page.day].push(s);render();stopSheet(s)}
+function startEdit(t=null,isCopy=false,fromDraft=false){
+ close();original=t&&!isCopy&&t.status!=="草稿"?t:null;editOrigin=fromDraft?"draft":"formal";
+ edit=clone(t||{...trip(""),city:"",date:"",days:[[]],prep:[],status:"草稿"});
+ go("edit",{day:0,initial:JSON.stringify(edit)});
+}
+function editEntry(t,fromList=false){
+ const stored=data.edits[t.id];
+ if(!stored){startEdit(t);return}
+ sheet(fromList?"发现未完成编辑草稿":"继续编辑行程",()=>`<div class="stack">${btn("继续编辑草稿",()=>{startEdit(stored,false,true);original=t},"",true)}${btn(fromList?"查看原行程":"编辑当前正式行程",()=>{close();if(fromList)openPrivate(t);else startEdit(t)},"",true)}</div>`)
+}
+function editor(){
+ const d=page.day;
+ const field=(label,key,type,attrs="")=>`<label class="row between line"><b>${key==="city"?"♧":"▤"}　${label} <span class="accent">*</span></b><input aria-label="${label}" data-edit="${key}" type="${type}" value="${esc(edit[key])}" ${attrs}></label>`;
+ return reference("editstatus",887,154,[[1,41,13,55,"返回",back],[75,41,24,55,"编辑信息",()=>document.querySelector("[data-edit=title]").focus()]]) +
+ main(`<section class="box"><label for="edit-title"><b>行程标题 <span class="accent">*</span></b></label><input class="wide" id="edit-title" data-edit="title" maxlength="30" value="${esc(edit.title)}" placeholder="给行程起个名字">${field("目的地","city","text",'placeholder="请输入目的地" maxlength="25"')}${field("出发日期","date","date")}<div class="line row between"><b>天数 <span class="accent">*</span></b>${btn(edit.days.length+" 天　›",dayCount)}</div></section>
+ <div class="box"><h3>路线地图</h3>${map(edit,d)}</div>${dayTabs(edit,d,i=>set("day",i),()=>{if(edit.days.length>=14){toast("演示最多支持 14 天");return}edit.days.push([]);set("day",edit.days.length-1)})}${timeline(edit,d,"edit")}`)+
+ foot(btn("保存草稿",saveEditDraft,"btn"),btn("路线预览",()=>previewRoute(d),"btn"),primary("完成编辑",finishEdit));
+}
+function dayCount(){sheet("设置行程天数",()=>`<div class="row between"><label>天数　<input id="days-count" type="number" min="1" max="14" value="${edit.days.length}"></label>${primary("确定",()=>{const n=Number($("days-count").value);if(!Number.isInteger(n)||n<1||n>14){toast("请输入 1–14 天");return}if(edit.days.slice(n).some(x=>x.length)){toast("请先移除要缩减日期中的地点");return}while(edit.days.length<n)edit.days.push([]);edit.days.length=n;page.day=Math.min(page.day,n-1);close();rerender()},true)}</div>`)}
+function updateTrip(t){const i=data.trips.findIndex(x=>x.id===t.id);if(i<0)data.trips.unshift(t);else data.trips[i]=t}
+function leaveEditor(t){if(stack[stack.length-1]?.name==="private"){replace("private",{id:t.id,day:0,tab:"行程安排"});stack.pop()}else replace("private",{id:t.id,day:0,tab:"行程安排"})}
+function previewPlace(s,t,day){sheet(stopName(s),()=>`<div class="box row">${image(places[s.i][1],"thumb")}<div>${esc(s.time||"待填写")} · 停留 ${s.stay} 分钟</div></div>`,{closeFn:()=>previewRoute(day)});}
+function stopSheet(s,working=clone(s)){
+ const restart=()=>stopSheet(s,working);
+ const discard=()=>{if(JSON.stringify(working)!==JSON.stringify(s))confirmBox("放弃地点修改？","如果是新添加的地点，地点仍保留在行程中。","放弃修改",()=>{},restart);else close()};
+ const today=edit.days[page.day], incoming=today[today.indexOf(s)-1];
+ sheet(stopName(s),()=>`<div class="row box">${image(places[s.i][1],"thumb")}<div><h3>${stopName(s)}</h3><small>${esc(edit.city||"芜湖")} · ${places[s.i][2]}</small></div></div>
+ <div class="form" id="stop-form"><label>计划到达时间<input type="time" data-stop="time" value="${esc(working.time)}"></label>
+ <div class="line row between"><b>前往方式</b>${incoming?btn(modes[legInfo(incoming,s).mode]+"　›",()=>transport(incoming,s,restart),"",true):"<small>当天首站</small>"}</div>
+ <label>预计停留时间（分钟）<input type="number" min="0" data-stop="stay" value="${working.stay}"></label>
+ <label>预计花销（元）<input type="number" min="0" data-stop="cost" value="${working.cost}"></label>
+ <label>备注　<select style="width:auto" data-stop="visibility">${["公开","仅朋友可见","私密"].map(v=>`<option ${v===working.visibility?"selected":""}>${v}</option>`).join("")}</select></label><textarea rows="2" data-stop="note" placeholder="写下地点备注">${esc(working.note)}</textarea></div>
+ <div class="row">${btn("删除地点",()=>removeStop(s,restart),"btn accent",true)}${btn("确定",()=>{Object.assign(s,{...working,links:s.links});close();rerender();const day=edit.days[page.day];if(conflicts(edit))toast("请留意时间顺序冲突")},"btn primary grow",true)}</div>`,{closeFn:discard});
+ document.querySelectorAll("[data-stop]").forEach(el=>el.oninput=()=>working[el.dataset.stop]=el.type==="number"?Math.max(0,Number(el.value)):el.value);
+}
+function transport(a,b,returnTo=null){
+ const l=legInfo(a,b);let chosen=l.mode;
+ const apply=(dismiss=false)=>{a.links[b.id]=chosen;if(returnTo)returnTo();else{close();rerender()}if(dismiss&&chosen!==l.mode)toast("已保留最新交通方式")};
+ sheet("选择出行方式",()=>`<h3>从 ${stopName(a)}　→　${stopName(b)}</h3><p class="muted">约 ${l.base.toFixed(1)} 公里</p>${modes.map((mode,i)=>`<label class="selectrow line"><input name="transport" type="radio" value="${i}" ${i===chosen?"checked":""}> ${modeIcons[i]}　<b>${mode}</b>　约 ${l.mins[i]} 分钟</label>`).join("")}<div style="margin-top:14px">${btn("确认",()=>apply(),"btn primary wide",true)}</div>`,{closeFn:()=>apply(true)});
+ document.querySelectorAll('[name=transport]').forEach(el=>el.onchange=()=>{chosen=Number(el.value);document.querySelectorAll('[name=transport]').forEach(x=>x.parentElement.classList.toggle("selected",x.checked))});
+}
+function removeStop(s,cancel){
+ const linked=edit.records.some(r=>r.stop===s.id);
+ const remove=()=>{edit.days[page.day]=edit.days[page.day].filter(x=>x.id!==s.id);edit.records.forEach(r=>{if(r.stop===s.id)r.stop=""});rerender()};
+ confirmBox("删除这个地点？",linked?"该地点关联了旅行记录。删除地点后，相关记录将保留为不关联地点的旅行记录。":"删除后将更新相邻路线。",linked?"保留记录并删除地点":"删除地点",remove,cancel);
+}
+function listPage(){
+ const statuses=["全部","待出发","进行中","已完成","草稿"];
+ const active=page.filter||"全部";
+ const entries=data.trips.filter(t=>active==="全部"||t.status===active);
+ return header("我的行程",btn("＋ 新建行程",()=>startEdit(),"accent"))+tabs(statuses,active,x=>{page.filter=x;render()})+main(entries.length?entries.map(t=>`<div class="box row">${image(t.cover,"cover")}<div class="grow"><div class="row between"><b>${esc(t.title||"未命名行程")}</b><span class="badge ${t.status==="草稿"?"purple":t.status==="进行中"||t.status==="已完成"?"green":""}">${t.status}</span></div><p style="margin:5px 0"><small>♧ ${esc(t.city||"未设置目的地")}<br>▤ ${esc(t.date||"未设置出发日期")}<br>◷ ${t.days.length} 天 · ${allStops(t).length} 个地点</small></p><div class="row between">${btn(t.status==="草稿"?"继续编辑":t.status==="进行中"?"继续记录":t.status==="已完成"?"发布作品":"✎ 编辑",()=>{if(t.status==="已完成"){openPrivate(t);chooseType(t)}else if(t.status==="进行中")openPrivate(t,"旅行记录");else editEntry(t,true)},"btn")}${t.status==="草稿"?"":btn("查看",()=>data.edits[t.id]?editEntry(t,true):openPrivate(t),"btn")}${btn("•••",()=>more(t),"",false,'aria-label="更多操作"')}</div></div></div>`).join(""):'<div class="empty">这个分类暂时没有行程</div>');
+}
+const getTrip=()=>data.trips.find(t=>t.id===page.id);
+function openPrivate(t,tab="行程安排"){go("private",{id:t.id,tab,day:0})}
+function more(t){
+ const rename=()=>sheet("重命名",()=>`<div class="row"><input id="rename" maxlength="30" class="grow" value="${esc(t.title)}">${primary("保存",()=>{const name=$("rename").value.trim();if(!name){toast("请输入标题");return}t.title=name;save();close();rerender()},true)}</div>`);
+ const remove=()=>confirmBox("确定删除这条私人行程？","删除后无法恢复。已发布的作品将独立保留。","删除行程",()=>{data.trips=data.trips.filter(x=>x.id!==t.id);delete data.edits[t.id];save();if(page.name==="private")pop();else rerender()});
+ if(t.status==="待出发"||t.status==="进行中"){
+  sheet("更多操作",()=>reference("moremenu",494,415,[[87,2,12,18,"关闭",close],[3,18,94,19,"重命名",rename],[3,37,94,17,"标记为已完成",()=>complete(t)],[3,54,94,16,"删除行程",remove],[3,69,94,20,"取消",close]],"dialog-art",true),{visual:"art"});
+  return
+ }
+ sheet("更多操作",()=>`<div class="stack">${btn("✎　重命名",rename,"",true)}${btn("♜　删除行程",remove,"accent",true)}${btn("取消",close,"",true)}</div>`);
+}
+
+function privatePage(){
+ const t=getTrip();if(!t)return header("我的行程")+main("<p>行程已删除</p>");
+ const d=page.day||0,tab=page.tab;
+ const body=tab==="行程安排"?`${map(t,d)}${dayTabs(t,d,i=>set("day",i))}${timeline(t,d)}`:tab==="行前准备"?prep(t):records(t);
+ return `<div class="hero" style="background:#dedfdb"><div style="position:absolute;inset:8px 14px auto" class="row between">${btn("‹",back,"back")}${btn("分享",()=>toast("私人路线快照分享计划在 V2 开放"))}${btn("•••",()=>more(t))}</div><h1>${esc(t.title||"未命名行程")}</h1><div class="row between"><div><span class="badge ${t.status==="已完成"?"green":""}">${t.status}</span>　${esc(t.city)} · ${t.days.length} 天${t.days.length>1?t.days.length-1+" 晚":""}</div>${btn("✎ 编辑行程",()=>editEntry(t),"btn")}</div></div><div class="foot"><small>▤ ${dateLabel(t)||"未设置出发日期"}</small><small>◷ ${t.days.length} 天</small><small>♧ ${allStops(t).length} 个地点</small></div>`+
+ tabs(["行程安排","行前准备","旅行记录"],tab,x=>{page.tab=x;render()})+main(body)+
+ (t.status==="已完成"?foot(btn("查看记录",()=>set("tab","旅行记录"),"btn"),primary("➤ 发布作品",()=>chooseType(t))):t.status==="进行中"?foot(primary("□ 结束行程",()=>complete(t))):foot(primary("▷ 开始行程",()=>{if(!t.date){toast("请先设置出发日期");return}t.status="进行中";save();rerender()}),btn("✓ 标记为已完成",()=>complete(t),"btn")));
+}
+function prep(t){
+ const done=t.prep.filter(x=>x.done).length;
+ return `<div class="box"><div class="row between"><h3>准备进度</h3><small>${done}/${t.prep.length} 已完成</small></div><progress max="${t.prep.length||1}" value="${done}"></progress>${t.prep.map((x,i)=>`<div class="row line" data-drag="prep" data-index="${i}" draggable="true">${btn(x.done?"●":"○",()=>{x.done=!x.done;save();rerender()},"accent")}<span class="grow">${esc(x.name)}</span><span class="muted">☰</span>${btn("↑",()=>move(t.prep,i,i-1,true))}${btn("删除",()=>{t.prep.splice(i,1);save();rerender()},"accent")}</div>`).join("")}<div style="margin-top:12px">${btn("＋ 添加准备事项",()=>sheet("添加准备事项",()=>`<div class="row"><input id="todo" maxlength="50" placeholder="例如：准备雨伞" class="grow">${primary("添加",()=>{const name=$("todo").value.trim();if(!name)return;t.prep.push({name,done:false});save();close();rerender()},true)}</div>`),"btn wide pink accent")}</div></div>`;
+}
+function records(t){const add=btn("⊕ 添加旅行记录",()=>openRecord(t),"btn round");return t.records.length?`${add}${t.records.map(r=>`${recordCard(r,true)}${btn(r.draft?"继续编辑草稿":"编辑记录",()=>openRecord(t,r),"accent")}`).join("")}`:`<div class="box empty">${image("empty")}<h3>还没有旅行记录</h3><p>随时记录体验、照片与感受，<br>也可以添加团购、门票等推荐。</p>${add}</div>`}
+function move(list,from,to,persist=false){if(from===to||to<0||to>=list.length)return;list.splice(to,0,list.splice(from,1)[0]);if(persist)save();rerender();if(list===edit?.days?.[page.day]&&conflicts(edit))toast("部分地点时间冲突")}
+$("app").addEventListener("dragstart",e=>{const el=e.target.closest("[data-drag]");if(el){drag={type:el.dataset.drag,index:+el.dataset.index};e.dataTransfer.setData("text/plain",String(drag.index))}});
+$("app").addEventListener("dragover",e=>{if(e.target.closest("[data-drag]"))e.preventDefault()});
+$("app").addEventListener("drop",e=>{const el=e.target.closest("[data-drag]");if(!el||!drag||drag.type!==el.dataset.drag)return;e.preventDefault();move(drag.type==="stop"?edit.days[page.day]:getTrip().prep,drag.index,+el.dataset.index,drag.type==="prep");drag=null});
+function openRecord(t,r){rec=clone(r||{id:id(),stop:"",title:"",body:"",photos:[],links:[],visibility:"私密",draft:false});go("record",{id:t.id,initial:JSON.stringify(rec)})}
+function recordPage(){
+ const t=getTrip(),options=allStops(t);
+ return reference("recordstatus",887,156,[[0,42,14,54,"返回",back]])+main(`<div class="box form"><label>♧ 关联地点（选填）<select data-rec="stop"><option value="">不关联地点</option>${options.map(s=>`<option value="${s.id}" ${s.id===rec.stop?"selected":""}>${stopName(s)}</option>`).join("")}</select></label></div>
+ <div class="box form"><label>✎ 记录标题（选填）<input data-rec="title" maxlength="30" value="${esc(rec.title)}" placeholder="给这条记录起个标题吧"></label></div>
+ <div class="box form"><label>▤ 旅行体验<textarea data-rec="body" rows="5" maxlength="1000" placeholder="写下游玩体验、感受、实用小贴士等…">${esc(rec.body)}</textarea></label></div>
+ <div class="box"><div class="row between"><h3>▧ 添加照片</h3><small>已选 ${rec.photos.length}/9</small></div><div class="photogrid">${rec.photos.map((p,i)=>btn(iconSlot("记录照片 "+(i+1),"recpic"),()=>{rec.photos.splice(i,1);rerender()})).join("")}${rec.photos.length<9?'<label class="recordpic" style="cursor:pointer">＋ 上传照片<input id="record-images" type="file" accept="image/*" multiple hidden></label>':""}${Array.from({length:Math.max(0,8-rec.photos.length)},()=>'<span class="recordpic" style="background:#f1f0f4;color:#c5c2cc">▧</span>').join("")}</div></div>
+ <div class="box form"><label>可见范围<select data-rec="visibility">${["私密","仅朋友可见","公开"].map(v=>`<option ${v===rec.visibility?"selected":""}>${v}</option>`).join("")}</select></label></div>
+ <div class="box"><h3>▤ 团购 / 门票链接（选填）</h3>${rec.links.map((l,i)=>`<div class="row between line"><small style="overflow-wrap:anywhere">${esc(l)}</small>${btn("移除",()=>{rec.links.splice(i,1);rerender()},"accent")}</div>`).join("")}${btn("＋ 添加链接",addLink,"accent")}</div>`)+foot(btn("保存草稿",()=>saveRecord(true),"btn round"),primary("保存记录",()=>saveRecord(false)))
+}
+function addLink(){sheet("添加团购 / 门票链接",()=>`<div class="row"><input id="link" class="grow" type="url" placeholder="https://…">${primary("添加",()=>{const value=$("link").value.trim();try{if(!["https:","http:"].includes(new URL(value).protocol))throw Error()}catch{toast("请输入有效的网页链接");return}rec.links.push(value);close();rerender()},true)}</div>`)}
+async function photoFile(file){
+ const url=URL.createObjectURL(file);try{
+ const im=new Image();im.src=url;await im.decode();const ratio=Math.min(1,550/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*ratio));c.height=Math.max(1,Math.round(im.height*ratio));c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c.toDataURL("image/jpeg",.72)
+ }finally{URL.revokeObjectURL(url)}
+}
+function startPub(t,single){
+ const snapshot=clone(t);snapshot.records=snapshot.records.filter(r=>!r.draft&&r.visibility==="公开");
+ snapshot.days.forEach(day=>day.forEach(s=>{delete s.note;delete s.visibility}));
+ delete snapshot.prep;
+ pub={id:id(),trip:snapshot,single,step:0,spot:"",selected:[],title:"",copy:"",cover:""};
+ go("publish");
+}
+function pubRecords(){return pub.trip.records.filter(r=>!pub.single||r.stop===pub.spot)}
+function workSnapshot(){
+ const t=clone(pub.trip),s=allStops(t).find(x=>x.id===pub.spot);
+ t.id=pub.id;t.single=pub.single;t.title=pub.title.trim()||(pub.single&&s?stopName(s):t.title);t.copy=pub.copy;t.cover=pub.single&&s?places[s.i][1]:t.cover;t.coverPhoto=pub.cover;t.records=clone(selectedRecords()).map(({draft,visibility,...r})=>r);
+ if(pub.single){t.days=[];t.date="";t.city="";t.spot=s?stopName(s):""}
+ delete t.status;
+ return t;
+}
+function chooseRecord(r,arrange=false){
+ const checked=pub.selected.includes(r.id);
+ return `<div class="line"><div class="row"><input aria-label="${esc(r.title||"旅行记录")}" type="checkbox" data-pick="${r.id}" ${checked?"checked":""}><b class="grow">${esc(r.title||"旅行记录")}</b>${arrange?btn("↑",()=>reorderRecord(r,-1),"btn"):""}${arrange?btn("↓",()=>reorderRecord(r,1),"btn"):""}</div><small>${esc(r.body)}</small>${arrange?photos(r):""}</div>`
+}
+function reorderRecord(r,direction){
+ const group=selectedRecords().filter(x=>x.stop===r.stop);
+ const idx=group.indexOf(r),other=group[idx+direction];if(!other)return;
+ const a=pub.selected.indexOf(r.id),b=pub.selected.indexOf(other.id);
+ [pub.selected[a],pub.selected[b]]=[pub.selected[b],pub.selected[a]];rerender()
+}
+function contentGroups(t,arrange){
+ const rs=arrange?selectedRecords():pubRecords();
+ const group=key=>rs.filter(r=>(r.stop||"")===key).map(r=>chooseRecord(r,arrange)).join("");
+ if(pub.single)return group(pub.spot)||'<p class="muted">照片、文案和记录均为选填，可继续下一步</p>';
+ return `<div class="box row"><input aria-label="必选路线" type="checkbox" checked disabled><div><b>行程概览与路线（必选）</b><br><small>${t.days.length} 天 · ${allStops(t).length} 个地点 · 包含交通与时间安排</small></div></div>${map(t,0)}<div class="box"><h3>整个行程的旅行记录</h3>${group("")||'<small>暂无可公开的整程记录</small>'}</div>${t.days.map((day,i)=>`<div class="box"><span class="badge">第 ${i+1} 天 ${dateLabel(t,i)}</span>${day.map(s=>`<div class="line"><div class="row">${image(places[s.i][1],"thumb")}<b>${esc(s.time)}　${stopName(s)}</b></div>${group(s.id)}</div>`).join("")}</div>`).join("")}`
+}
+function publishPage(){
+ const {trip:t,single,step}=pub,title=single?"发布单个地点测评":"发布完整行程攻略";
+ const labels=[single?"选择地点与记录":"选择发布内容","内容整理","发布设置"];
+ let body;
+ if(step<2)body=`<div class="box row">${image(t.cover,"thumb")}<div><h3>${esc(t.title)}</h3><small>${esc(t.city)} · ${t.days.length} 天 · ${allStops(t).length} 个地点</small></div></div>${step===0&&single?`<div class="box"><h3>选择要发布的地点</h3>${allStops(t).map(s=>btn(`${image(places[s.i][1],"thumb")}<span class="grow">${stopName(s)}<br><small>${t.records.filter(r=>r.stop===s.id).length} 条可公开记录</small></span><span>${s.id===pub.spot?"●":"○"}</span>`,()=>{pub.spot=s.id;pub.selected=[];rerender()},"selectrow "+(s.id===pub.spot?"selected":""))).join("")}</div>`:""}<h3>${step===0?"选择要发布的内容":"整理展示内容"}</h3>${contentGroups(t,step===1)}`;
+ else {const work=workSnapshot();body=`<div class="box form"><h3>发布设置</h3><label>上传封面（选填）</label><div class="row">${pubPhoto(work,"cover")}<label class="btn pink accent">更换封面<input type="file" id="pub-image" accept="image/*" hidden></label></div><label>作品标题（选填）<input data-pub="title" maxlength="30" value="${esc(pub.title)}" placeholder="${esc(work.title)}"></label><label>发布文案（选填）<textarea data-pub="copy" maxlength="500" rows="5" placeholder="写下想分享的话">${esc(pub.copy)}</textarea></label></div><div class="box"><div class="row between"><h3>内容预览</h3>${btn("查看完整预览 ›",()=>go("public",{trip:workSnapshot(),preview:true}),"accent")}</div><div class="row">${pubPhoto(work,"thumb")}<b>${esc(work.title)}</b></div></div>`;}
+ return header(title)+main(`<div class="steps">${labels.map((l,i)=>`<div class="${i<=step?"active":""}"><b>${i<step?"✓":i+1}</b>${l}</div>`).join("")}</div>${body}`)+
+ (step<2?foot(...(step?[btn("上一步",()=>{pub.step--;render()},"btn")]:[]),primary("下一步："+labels[step+1],()=>{if(single&&!pub.spot){toast("请先选择地点");return}pub.step++;render()})):foot(btn("保存草稿",saveWorkDraft,"btn"),primary("➤ 发布作品",()=>confirmBox("确认发布作品？","发布后暂不支持修改。请确认预览中的公开内容。","确认发布",publishWork))));
+}
+function profile(){
+ return `<main class="reference-view">${reference("profilehead",651,763,[
+ [4,9,30,12,"添加好友",()=>native("添加好友")],[46,9,24,12,"新访客",()=>native("新访客")],[73,9,12,12,"搜索",()=>native("抖音原生搜索")],[86,9,12,12,"菜单",()=>native("菜单")],
+ ...["待收货","观看历史","我的钱包","我的客服","我的行程","全部功能"].map((label,i)=>[i*16.66,72,16.66,14,label,()=>i===4?go("list"):native(label)]),[66,89,30,10,"去发布",createPicker]
+ ])}${tabs(["作品","日常","推荐","收藏","喜欢"],page.tab||"作品",x=>set("tab",x))}<div class="grid" style="margin-top:10px">${(page.tab||"作品")==="作品"?btn(`<div class="tilepic" style="padding:0">${image("sunset")}<span class="tag">草稿箱 · ${data.drafts.length}</span></div>`,()=>go("workDrafts"),"tile")+data.works.map(w=>btn(`<div class="tilepic" style="padding:0">${pubPhoto(w,"")}<span class="tag">${w.single?"地点测评":"行程攻略"}</span></div><div>${esc(w.title)}</div>`,()=>openPublic(false,w),"tile")).join(""):page.tab==="收藏"?savedTiles():""}</div></main>`+navigation()
+}
+function workDrafts(){return header("作品草稿箱")+main(data.drafts.length?data.drafts.map(d=>btn(`<span class="grow">${esc(d.title||d.trip.title)}<br><small>${d.single?"地点测评":"完整行程攻略"}</small></span>›`,()=>{pub=clone(d);const ids=new Set((data.trips.find(t=>t.id===pub.trip.id)?.records||[]).filter(r=>!r.draft&&r.visibility==="公开").map(r=>r.id));pub.trip.records=pub.trip.records.filter(r=>ids.has(r.id));pub.selected=pub.selected.filter(k=>ids.has(k));go("publish")},"box selectrow")).join(""):'<div class="empty">还没有作品草稿</div>')}
+$("app").addEventListener("input",e=>{
+ const el=e.target;
+ for(const [key,obj] of [["edit",edit],["rec",rec],["pub",pub]])if(el.dataset[key])obj[el.dataset[key]]=el.value;
+ if(el.dataset.pick){pub.selected=el.checked?[...pub.selected,el.dataset.pick]:pub.selected.filter(x=>x!==el.dataset.pick);if(pub.step===1)rerender()}
+});
+$("app").addEventListener("change",async e=>{
+ if(e.target.id==="record-images"){
+ const target=rec,files=[...e.target.files].slice(0,9-target.photos.length);
+ for(const file of files){try{target.photos.push(await photoFile(file))}catch{toast("有照片格式无法读取")}}
+ if(page.name==="record"&&target===rec)rerender();
+ }
+ if(e.target.id==="pub-image"){const target=pub;try{target.cover=await photoFile(e.target.files[0]);if(page.name==="publish"&&target===pub)rerender()}catch{toast("无法读取封面")}}
+});
+$("app").addEventListener("submit",e=>{if(e.target.id==="search-form"){e.preventDefault();set("query",new FormData(e.target).get("query").trim())}});
+let touchDrag=null;
+$("app").addEventListener("pointerdown",event=>{
+ const row=event.target.closest("[data-drag]");
+ if(event.pointerType==="mouse"||!row)return;
+ const start={x:event.clientX,y:event.clientY,type:row.dataset.drag,index:+row.dataset.index,row,ready:false};
+ start.timer=setTimeout(()=>{start.ready=true;row.style.opacity=".58"},400);
+ touchDrag=start;
+});
+$("app").addEventListener("pointermove",event=>{
+ if(touchDrag&&!touchDrag.ready&&Math.hypot(event.clientX-touchDrag.x,event.clientY-touchDrag.y)>12){clearTimeout(touchDrag.timer);touchDrag=null}
+});
+function endTouch(event,drop){
+ const active=touchDrag;if(!active)return;
+ touchDrag=null;clearTimeout(active.timer);active.row.style.opacity="";
+ if(!active.ready||!drop)return;
+ const target=document.elementFromPoint(event.clientX,event.clientY)?.closest("[data-drag]");
+ if(target?.dataset.drag!==active.type)return;
+ const preventClick=e=>{e.stopImmediatePropagation();e.preventDefault()};
+ $("app").addEventListener("click",preventClick,{capture:true,once:true});
+ setTimeout(()=>$("app").removeEventListener("click",preventClick,true),450);
+ move(active.type==="stop"?edit.days[page.day]:getTrip().prep,active.index,+target.dataset.index,active.type==="prep");
+}
+$("app").addEventListener("pointerup",event=>endTouch(event,true));
+$("app").addEventListener("pointercancel",event=>endTouch(event,false));
+
+
+
+const labels={feed:"P01　推荐作品",channel:"P02　行程频道",category:"P02　分类结果",public:"P05　公开作品",edit:"P07-B　行程编辑",search:"P07-S　行程搜索",private:"PR　私人行程",list:"MY　我的行程",profile:"PROFILE　我的主页",record:"REC　旅行记录",publish:"P08 / REV　作品发布",workDrafts:"作品草稿箱",native:"原生页面占位"};
+const notes={feed:"中间读攻略，右侧互动，底部作者区可跟玩。",channel:"上排为六个分类，下排切换内容栏目。行程卡先打开对应作品。",category:"分类共用卡片版式，示例用于评审内容如何分流。",public:"整段记录在地图后，地点记录在相应站点下。底部可复制路线。",edit:"基本信息、日期与按天路线共用一个编辑器，底部保存、预览或完成。",search:"选择定位后查找地点。从编辑器进入时，地点加到当前日期。",private:"封面下显示状态，三个标签分别管理路线、清单与记录。",list:"草稿分类只收纳新建规划草稿。已有行程的编辑草稿依附原卡片。",profile:"我的行程进入私人列表。作品网格首位是作品草稿箱。",record:"可只传照片，记录归一个地点或全程，可见范围单独设置。",publish:"选择、整理、设置三步完成。只有选中的公开记录会进入作品。",workDrafts:"继续上次选材和编辑，预览及发布前重新核对可见范围。",native:"本地演示平台承接，返回后恢复来源。"};
+function iconSlot(label,cl=""){return `<span role="img" aria-label="${esc(label)}" class="wfpic ${cl}"><span>${esc(label)}</span></span>`}
+function topBar(current){return `<div class="topnav">${btn("☰",()=>go("profile"))}${btn("关注",()=>native("关注"))}${btn("同城",()=>go("channel",{category:"附近"}))}${btn("行程",()=>go("channel"),current==="行程"?"on":"")}${btn("推荐",()=>go("feed"),current==="推荐"?"on":"")}${btn("⌕",()=>native("抖音原生搜索"),"",false,'aria-label="原生搜索"')}</div>`}
+function byline(t){return t.id===sample.id?"阿屿在路上":guides.some(g=>g.id===t.id)?"路线作者":"旅行小鹿"}
+function feedWire(){const t=page.trip||sample,author=byline(t);return status()+topBar("推荐")+`<main class="wfpost">${iconSlot("作品封面","fullpic")}${t.id===sample.id?'<small class="pagecount">1/2</small>':""}${btn(t.single?"阅读地点测评":"阅读完整行程",()=>openPublic(false,t),"read")}<div class="rail">${btn("头像",()=>native(author))}${btn(data.likes[t.id]?"已赞":"点赞",()=>toggle("likes",t.id))}${btn("评论",()=>native("评论"))}${btn(data.favorites[t.id]?"已收藏":"收藏",()=>toggle("favorites",t.id))}${btn("分享",()=>native("分享"))}</div><div class="caption"><small>@ ${author}　·　${t.single?"地点测评":"行程"}</small><h2>${esc(t.title)}</h2><p>${esc(t.copy|| (t.id===sample.id?"看江边日落，逛美食街，读这条两日路线。":""))}</p>${t.single?"":btn("跟着玩",()=>{openPublic(false,t);copySheet(t)},"btn")}</div></main>`+navigation()}
+places.push(["新都桥","stop0","景点"],["稻城亚丁","stop1","景点"],["海螺沟","stop2","景点"],["鼓浪屿","stop0","景点"],["环岛路","stop1","景点"],["沙坡尾","stop2","景点"]);
+function demo(title,city,days,date=""){const t=trip(title);t.id=city;t.city=city;t.days=days.map(d=>d.map((i,j)=>makeStop(i,j?"14:00":"09:00")));t.date=date;t.prep=[];return t}
+sample.id="demo-wuhu";sample.date="";const guides=[sample,demo("川西3天2晚自驾行程","川西",[[8],[9],[10]],"2026-12-12"),demo("厦门4天3晚海岛慢游","厦门",[[11],[12],[13],[11]])];const cats=["热门城市","热门景点","周边游","周末出行","定制行程","露营徒步"];const catalogue=()=>[...data.works,...guides];
+function tile(t){return btn(`<div class="tilepic">${iconSlot(t.single?"测评封面":"行程封面","poster")}<span class="tag">${t.single?"地点测评":"行程"}</span></div><div><b>${esc(t.title)}</b><br><small>${esc(t.city||t.spot||"")} · ${t.single?"单地点":t.days.length+"天"}</small><br><small>作者　${byline(t)}</small></div>`,()=>go("feed",{trip:t}),"tile")}
+function resourceTile(title,kind){return btn(`<div class="tilepic">${iconSlot(kind+"封面","poster")}<span class="tag">${kind}</span></div><div><b>${title}</b><br><small>${kind==="团购"?"套餐价格 · 已售数量":"地点简介 · 评分"}</small></div>`,()=>native(title),"tile")}
+function channel(){const tab=page.category||"推荐";return status()+topBar("行程")+`<div class="chan"><div class="row">${btn("⌕　搜索行程、景点、城市",()=>go("search"),"searchbtn grow")}${btn("我的行程",()=>go("list"),"btn")}</div><div class="cats">${cats.map((c,i)=>btn(`<b>${["城","景","游","周","定","营"][i]}</b>${c}`,()=>go("category",{cat:c}))).join("")}</div></div>`+tabs(["推荐","附近","发现","直播"],tab,x=>set("category",x))+main(tab==="直播"?'<div class="empty">直播栏目占位 · V2</div>':`<div class="grid">${(tab==="附近"?[tile(sample),resourceTile("凤凰美食街套餐","团购")]:tab==="发现"?[...data.works.map(tile),tile(guides[2]),tile(guides[1])]:[...data.works.map(tile),tile(guides[1]),resourceTile("牛香十里潮汕牛肉火锅","团购"),resourceTile("杭州西湖景区","景点百科"),tile(guides[2]),tile(sample)]).join("")}</div>`)+navigation()}
+function category(){const samples=[[sample,guides[2],guides[1]],[guides[1],sample],[sample],[sample,guides[2]],[guides[2],guides[1]],[guides[1]]];return header(page.cat)+main(`<div class="grid">${samples[cats.indexOf(page.cat)].map(tile).join("")}</div>`)}
+function map(t,d,large=false,m=false){const ls=t.days[d]||[];return `<div class="wfmap ${large?"large":""}"><small>路线地图 · 第 ${d+1} 天</small><div>${ls.map((s,i)=>`<span>${i+1} ${esc(stopName(s))}</span>`).join(" → ")||"添加地点后显示路线"}</div>${large?"":btn("查看大图",()=>{const old=modal;sheet("路线地图",()=>map(t,d,true,true),{closeFn:()=>{modal=old;renderModal()}})},"",m)}</div>`}
+function photos(r){return r.photos?.length?`<div class="photogrid">${r.photos.map((_,i)=>iconSlot("记录照片 "+(i+1),"recpic")).join("")}</div>`:""}
+function recordCard(r,priv=false,commercial=false){return `<article class="box pink"><h3>${esc(r.title||"旅行记录")}</h3><p>${esc(r.body)}</p>${photos(r)}${(priv||commercial)?(r.links||[]).map(l=>btn(esc(l)+" ›",()=>native(l),"res")).join(""):""}${priv?`<small>${esc(r.visibility)} ${r.draft?"· 草稿":""}</small>`:""}</article>`}
+function publicPage(){const t=page.trip,d=page.day||0;if(t.single)return header("地点测评")+main(`${iconSlot("测评封面","widepic")}<h2>${esc(t.title)}</h2><p>地点 · ${esc(t.spot)}</p><p>${esc(t.copy)}</p>${t.records.map(r=>recordCard(r,false,true)).join("")}`)+(page.preview?foot(btn("返回发布设置",pop,"btn")):"");return `<header class="author">${btn("‹",back,"back",false,'aria-label="返回"')}${iconSlot("头像","avatar")}<b>${byline(t)}</b>${btn(page.follow?"已关注":"关注",()=>set("follow",!page.follow),"btn")}${btn("搜索",()=>native("抖音原生搜索"))}</header>`+main(`<small>行程攻略</small><h1>${esc(t.title)}</h1><p>${esc(t.city)} · ${t.days.length} 天 · ${allStops(t).length} 站</p>${t.copy?`<p>${esc(t.copy)}</p>`:""}<div class="box"><h3>行程概览</h3><div class="overview"><div><small>${t.days.length} 天行程</small><br><small>${allStops(t).length} 个地点</small><br><small>约 ${t.days.reduce((n,day)=>n+day.slice(1).reduce((v,x,i)=>v+legInfo(day[i],x).base,0),0).toFixed(1)} 公里</small></div>${map(t,d)}</div></div>${t.records.filter(r=>!r.stop).map(r=>recordCard(r,false,true)).join("")}${dayTabs(t,d,i=>set("day",i))}${timeline(t,d,"public")}`)+(page.preview?foot(btn("返回发布设置",pop,"btn")):foot(btn("评论",()=>native("评论")),btn(data.likes[t.id]?"已赞":"点赞",()=>toggle("likes",t.id)),btn(data.favorites[t.id]?"已收藏":"收藏",()=>toggle("favorites",t.id)),btn("分享",()=>native("分享")),btn("跟着玩",()=>copySheet(t),"btn primary")))}
+let failNextWrite=false,failNextExternal=false;
+function setupReview(){const clear=msg=>{$("testStatus").textContent=msg};$("failWrite").onclick=()=>{failNextWrite=true;clear("已设置。下一次保存或发布会失败一次。")};$("failOpen").onclick=()=>{failNextExternal=true;clear("已设置。下一次打开原生页面会失败一次。")}}
+function native(title){if(failNextExternal){failNextExternal=false;$("testStatus").textContent="已模拟外部跳转失败，可以重试。";toast("此资源暂时无法打开，请稍后重试");return}if(title==="朋友"||title==="消息"){toast("原生入口占位");return}go("native",{title})}
+function commit(update){if(failNextWrite){failNextWrite=false;$("testStatus").textContent="已模拟保存失败，可以重试。";toast("本地保存失败，内容保留在当前页面，请重试");return false}const prev=clone(data);try{update();localStorage.setItem(storeKey,JSON.stringify(data));return true}catch{data=prev;toast("本地保存失败，内容保留在当前页面，请重试");return false}}
+function copySheet(t){function copy(){const c=trip(t.title,true);c.city=t.city;c.date=t.date||"";c.prep=[];c.days=t.days.map(day=>{const seq=day.map(s=>({...makeStop(s.i,s.time),stay:s.stay,cost:s.cost}));seq.slice(0,-1).forEach((s,i)=>s.links[seq[i+1].id]=legInfo(day[i],day[i+1]).mode);return seq});return c}const add=date=>{if(!date)return toast("请选择出发日期");const c=copy();c.date=date;if(commit(()=>updateTrip(c))){close();openPrivate(c);toast("已加入待出发")}};sheet("跟着玩",()=>`<p>${esc(t.title)} · ${t.days.length} 天 · ${allStops(t).length} 站</p><p>复制路线、地点顺序与交通参考。</p><div class="stack">${primary("直接加入待出发",()=>t.date?add(t.date):sheet("补充出发日期",()=>`<label>出发日期 <input id="copydate" type="date"></label>${primary("加入待出发",()=>add($("copydate").value),true)}`,{closeFn:()=>copySheet(t)}),true)}${btn("编辑后加入",()=>startEdit(copy(),true),"btn",true)}</div>`)}
+function confirmBox(title,body,label,fn,cancel=close){sheet(title,()=>`<p>${esc(body)}</p><div class="row">${btn(title.includes("发布")?"返回检查":"取消",cancel,"btn grow",true)}${btn(esc(label),()=>{close();fn()},"btn primary grow",true)}</div>`,{closeFn:cancel,center:true})}
+function merged(){const t=clone(edit),live=data.trips.find(x=>x.id===t.id);t.status=original?(live?.status||original.status):"待出发";if(original&&live){t.prep=clone(live.prep);t.records=clone(live.records);const ids=new Set(allStops(t).map(s=>s.id));t.records.forEach(r=>{if(!ids.has(r.stop))r.stop=""})}return t}
+function conflicts(t){const mins=s=>{const [h,m]=s.split(":").map(Number);return h*60+m};return t.days.some(day=>day.slice(1).some((s,i)=>{const a=day[i],l=legInfo(a,s);return a.time&&s.time&&mins(s.time)<mins(a.time)+Number(a.stay)+l.mins[l.mode]}))}
+function finishEdit(){if(!edit.title.trim()||!edit.city.trim()||!edit.date)return toast("请补全标题、目的地和出发日期");if(!allStops(edit).length)return toast("至少添加一个地点");if(allStops(edit).some(s=>!s.time))return toast("请完善地点的预计到达时间");const t=merged();const submit=()=>{if(!commit(()=>{updateTrip(t);delete data.edits[t.id]}))return;leaveEditor(t);toast(conflicts(t)?"已保存，请检查时间冲突":"已保存行程")};if(original&&data.edits[t.id]&&editOrigin!=="draft")sheet("完成编辑并删除旧草稿？",()=>`${btn("返回检查",close,"btn",true)} ${primary("完成编辑并删除旧草稿",submit,true)}`);else submit()}
+function saveEditDraft(){if(!original){const t=clone(edit);t.status="草稿";if(commit(()=>updateTrip(t)))replace("list",{filter:"草稿"});return}const stash=()=>{if(commit(()=>{data.edits[edit.id]=clone(edit)}))leaveEditor(original)};sheet("保存编辑进度",()=>`<div class="stack">${btn("保存到原行程",()=>{const t=merged();if(commit(()=>updateTrip(t)))leaveEditor(t)},"btn",true)}${btn("另存为编辑草稿",()=>{if(editOrigin!=="draft"&&data.edits[edit.id])confirmBox("覆盖旧草稿？","当前路线将替换附属草稿。","覆盖旧草稿",stash);else stash()},"btn",true)}${btn("取消",close,"btn",true)}</div>`)}
+function complete(t){if(!allStops(t).length)return toast("至少添加一个地点后才能完成行程");confirmBox(t.status==="进行中"?"结束行程？":"标记为已完成？","完成后可补充记录、发布完整攻略或地点测评。","确认完成",()=>{if(commit(()=>{t.status="已完成"}))rerender()})}
+function chooseType(t){if(t.status!=="已完成")return;if(!allStops(t).length)return toast("请先添加至少一个地点");sheet("发布作品",()=>`<div class="stack">${btn("完整行程攻略",()=>startPub(t,false),"btn",true)}${btn("单个地点测评",()=>startPub(t,true),"btn",true)}</div>`)}
+function selectedRecords(){const current=data.trips.find(t=>t.id===pub.trip.id);const eligible=new Set((current?.records||[]).filter(r=>!r.draft&&r.visibility==="公开").map(r=>r.id));return pub.selected.map(k=>pubRecords().find(r=>r.id===k)).filter(r=>r&&eligible.has(r.id))}
+function saveWorkDraft(){if(!commit(()=>{data.drafts=data.drafts.filter(d=>d.id!==pub.id);data.drafts.unshift(clone(pub))}))return;pop();toast("已保存作品草稿")}
+function publishWork(){if(!allStops(pub.trip).length||pub.single&&!pub.spot)return toast("请先选择地点");const t=workSnapshot();if(!commit(()=>{if(!data.works.some(w=>w.id===pub.id))data.works.unshift(t);data.drafts=data.drafts.filter(d=>d.id!==pub.id)}))return;replace("public",{trip:t,day:0});toast("作品已发布到演示主页")}
+function pubPhoto(t,cls){return iconSlot(t.single?"测评封面":"作品封面",cls||"poster")}
+function savedTiles(){return catalogue().filter(t=>data.favorites[t.id]).map(tile).join("")||"<p>暂无收藏作品</p>"}
+function previewRoute(d){const legs=edit.days.flatMap(day=>day.slice(1).map((s,i)=>legInfo(day[i],s)));sheet("路线预览",()=>`${map(edit,d,false,true)}<p>${edit.days.length} 天 · ${allStops(edit).length} 站 · 约 ${legs.reduce((n,l)=>n+l.base,0).toFixed(1)} km · ${legs.reduce((n,l)=>n+l.mins[l.mode],0)} 分钟</p><small>交通图例　${modes.join("／")}</small>${dayTabs(edit,d,previewRoute,null,true)}<details open><summary>第 ${d+1} 天地点与交通</summary>${timeline(edit,d,"preview",true)}</details>`)}
+function reference(pic,w,h,items,cls="",m=false){if(pic==="editstatus")return status()+header("编辑行程",btn("编辑信息",()=>document.querySelector("#edit-title").focus()));if(pic==="recordstatus")return status()+header("旅行记录");if(pic==="searchstatus")return status();if(pic==="profilehead"){const on=(k,cl="")=>{const item=items.find(i=>i[4]===k);return btn(k,item[5],cl)};return status()+`<div class="prof"><div class="profcover">${iconSlot("个人主页封面","profp")}<div class="profactions">${["添加好友","新访客","搜索","菜单"].map(k=>on(k)).join("")}</div><div class="identity">${iconSlot("头像","avatar")}<div><b>旅行小鹿</b><br><small>抖音号 · 个人资料</small></div></div></div><div class="stats"><small>获赞　 互关　 关注　 粉丝</small>${btn("编辑主页",()=>native("编辑主页"),"btn")}</div><small>个人简介 · 所在地</small><div class="profmenu">${items.filter(i=>i[1]===72).map(i=>btn(i[4],i[5])).join("")}</div><div class="stats"><small>记录我的旅行生活</small>${on("去发布","btn")}</div></div>`}return `<div class="stack">${items.map(i=>btn(esc(i[4]),i[5],"btn",m)).join("")}</div>`}
+function saveRecord(draft){if(!draft&&!rec.body.trim()&&!rec.photos.length)return toast("请填写旅行体验或添加照片");const t=getTrip(),r={...clone(rec),draft};if(!commit(()=>{const i=t.records.findIndex(x=>x.id===r.id);if(i<0)t.records.push(r);else t.records[i]=r}))return;close();pop();toast(draft?"已保存记录草稿":"已保存记录")}
+function render(){setupReview();actions=[];const views={feed:feedWire,channel,category,search,edit:editor,list:listPage,private:privatePage,public:publicPage,record:recordPage,publish:publishPage,profile,workDrafts,native:nativePage};$("app").dataset.page=page.name;$("app").innerHTML=(["list","private","public","publish","workDrafts","native","category"].includes(page.name)?status():"")+views[page.name]();if($("loc"))$("loc").onchange=e=>{page.loc=e.target.value;page.query="";render()};$("where").textContent=labels[page.name];$("help").textContent=notes[page.name];renderModal()}
+
+
+
+function search(){const q=(page.query||"").trim(),cat=page.cat||"综合",loc=page.loc||"八佰伴",center={"八佰伴":5,"镜湖公园":6,"芜湖":0}[loc];const pool=places.map((p,i)=>({p,i,dist:.1+Math.abs(i-center)*.6}));const near=pool.slice(0,8).sort((a,b)=>a.dist-b.dist);const exact=q?pool.filter(x=>x.p[0].includes(q)):[];const specific=q&&!["芜湖八佰伴",loc].includes(q);const matching=catalogue().filter(t=>!page.adding&&(!q||(t.title+t.city).includes(q)));const cards=xs=>xs.map(({p,i,dist})=>`<div class="row line">${btn(iconSlot("地点图","thumb"),()=>native(p[0]))}<div class="grow"><b>${esc(p[0])}</b><br><small>${p[2]} · 距${esc(loc)} ${dist.toFixed(1)} km</small></div>${btn(data.favorites["p"+i]?"★":"☆",()=>toggle("favorites","p"+i))}${btn("＋加入行程",()=>{if(page.adding){pop();addStop(i)}else sheet("加入行程",()=>`<div class="stack">${data.trips.filter(t=>t.status!=="草稿").map(t=>btn(esc(t.title),()=>{startEdit(t);addStop(i)},"btn",true)).join("")}${btn("新建行程",()=>{startEdit();addStop(i)},"btn",true)}</div>`)},"badge")}</div>`).join("");
+return status()+main(`<div class="row">${btn("‹",back,"back",false,'aria-label="返回"')}<select id="loc" aria-label="定位">${["八佰伴","镜湖公园","芜湖"].map(s=>`<option ${s===loc?"selected":""}>${s}</option>`).join("")}</select><form class="row grow" id="search-form"><input class="grow" name="query" value="${esc(q)}" placeholder="搜索行程、景点、城市"><button>搜索</button></form></div>${tabs(["综合","景点","美食","商场","酒店","玩乐"],cat,x=>set("cat",x))}${cat==="综合"?`${cards(exact)}${matching.map(t=>btn("行程作品 · "+esc(t.title),()=>go("feed",{trip:t}),"res")).join("")}${specific?exact.length||matching.length?"":'<div class="empty">没有找到匹配结果</div>':`<div class="box"><h3>猜你喜欢</h3><p>围绕${loc}的地点</p><div class="terms">${["附近好玩","美食","餐厅","周边景点","商场","亲子游玩"].map((v,i)=>btn(loc+v,()=>set("cat",["景点","美食","美食","景点","商场","玩乐"][i]),"badge")).join("")}</div></div>${["景点","美食"].map(c=>`<h3>附近的${c}</h3>${cards(near.filter(x=>x.p[2]===c))}`).join("")}`}`:cards((specific?exact:near).filter(x=>x.p[2]===cat))||'<div class="empty">没有匹配的地点</div>'}`)}
+
+
+render();
+</script></html>
